@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+    <link rel="stylesheet"  href="jquery-mobile/jquery.mobile-1.3.2.min.css">
+    <link rel="stylesheet" href="jquery-mobile/demos/_assets/css/jqm-demos.css">
+    <link rel="shortcut icon" href="jquery-mobile/demos/_assets/favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <script src="jquery-mobile/demos/js/jquery.js"></script>
+    <script src="jquery-mobile/demos/_assets/js/index.js"></script>
+    <script src="jquery-mobile/jquery.mobile-1.3.2.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+     <script src="js/cordova.js"></script>
+
+
+    <script type="text/javascript">
+        
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+
+    var geo_options = {        
+        maximumAge        : Infinity, 
+        timeout           : 5000
+        };
+    
+    function onDeviceReady() {
+       navigator.geolocation.getCurrentPosition(onSuccess, onError, geo_options);
+    }
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(pos) {           
+        
+        var lat = pos.coords.latitude;
+        var lng = pos.coords.longitude;
+        $("#lat").text(lat);
+        $("#lng").text(lng);
+        //alert("Datos exitosos" + lat);
+        if (lat=="") 
+            {
+                $("#lat").text("10.50");
+            }
+        if (lng=="") 
+            {
+                $("#lng").text("-66.90");
+            }
+     }
+    // La función 'callback' onError recibe un objeto `PositionError`.
+    //
+    function onError(error) {
+        alert('Codigo Err.: '    + error.code    + '\n' +
+              'Mensaje    : ' + error.message + '\n');
+    }
+
+    </script>
+
+
+</head>
+<body>        
+    <!-- Home -->
+    
+    <div data-role="page" id="home">
+        <div data-theme="a" data-role="header">            
+            <div class="ui-btn-right">
+                <a href="#win1" data-role="button" data-icon="search" data-iconpos="notext">Search</a>        
+            </div>
+            <h3>
+                Registre su Ubicacion
+            </h3>
+        </div>
+        <div data-role="content">                    
+            <br />            
+            <span> Latitud  actual:</span> <span id="lat"> </span> <br />
+            <span> Longitud actual:</span> <span id="lng"> </span> <br />                     
+            <label for="categoria">Categoria del lugar:</label>
+            <input type="text" name="cat" id="categoria" data-mini="true" />
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nomb" id="nombre"  data-mini="true" />                    
+            <a data-role=button id="btn">Guardar</a>            
+        </div>
+    </div> 
+
+    <div data-role="page" id="win1" data-add-back-btn="true">
+        <div data-role="header">
+            <h1>Inserte su busqueda</h1>
+        </div>
+        <div data-role="content">             
+            <input type="search" name="search-mini" id="search-mini" data-mini="true" />
+            <a data-role=button id="btn2">Buscar</a> 
+        </div>
+    </div>
+
+
+    <div data-role="page" id="win2" data-add-back-btn="true">
+        <div data-role="header">
+            <h1>Data Cargada</h1>
+        </div>
+        <div data-role="content"> 
+        </div>
+    </div>
+        
+
+    <script src="https://da189i1jfloii.cloudfront.net/js/kinvey-phonegap-1.1.2.min.js"></script>
+    
+</body>
+</html>
+
+
+<script>  
+     
+
+/*var promise = Kinvey.ping();
+    promise.then(function(response) {
+    console.log('Kinvey Ping Success. Kinvey Service is alive, version: ' + response.version + ', response: ' + response.kinvey);
+    }, function(error) {
+    console.log('Kinvey Ping Failed. Response: ' + error.description);
+    });*/
+
+    window.KINVEY_DEBUG = true;
+    var promise = Kinvey.init({
+        appKey : 'kid_eVml2OS-G9',
+        appSecret : '3dea370d5f60467d8215898454257790'
+    });    
+  promise.then(function(activeUser) {
+  // The `Kinvey.init` function returns a promise which resolves to the
+  // active user data. If there is no active user, create one.
+  if(null === activeUser)
+    {
+    return Kinvey.User.signup();
+    }
+    return activeUser;
+  }).then(function(activeUser) {
+  // Your app is now connected to Kinvey and has an active user.
+  });
+
+/*if ($("#lat").text()==" ")
+{
+    $("#lat").text("10.506474");
+    $("#lng").text("-66.908135");
+}*/
+
+$("#btn").bind ("click", function (event)
+{
+    //alert("exitoso");
+    var locat = {
+        nombre    : $("#nombre").val(),
+        categoria : $("#categoria").val(),
+        latitud   : $("#lat").text(),
+        longitud  : $("#lng").text()
+    };
+  //alert($("#nombre").val());
+
+    var promise = Kinvey.DataStore.save('locations', locat, 
+        {
+        success : function(response) {
+           alert("Data agregada !");
+         }
+        }
+     );
+
+});
+
+
+$("#btn2").bind ("click", function (event)
+{
+    var query = new Kinvey.Query();
+    //var re = new RegExp("^*Hoyada*");
+    var texto = $("#search-mini").val();
+    //alert(texto);
+    query.matches('nombre', "^.*"+texto+".*", ignoreCase = true);
+    var $content = $("#win2 div:jqmData(role=content)");
+    markup = "<ul #win2 data-role='listview' data-inset='true'>"
+    
+    var promise = Kinvey.DataStore.find('locations', query, {
+        success: function(response) {            
+            //alert(response[0].nombre);
+            numItems = response.length;
+            for ( var i = 0; i < numItems; i++ ) 
+                {
+                    markup += "<li>" + response[i].nombre + "</li>";
+                }    
+            markup += "</ul>";
+            $content.html( markup );
+            $.mobile.changePage ($("#win2"));
+            }
+    });
+
+    // The array of items for this category.
+            //cItems = category.items,
+
+            // The number of items in the category.
+            //numItems = cItems.length;
+
+        // Generate a list item for each item in the category
+        // and add it to our markup.
+        /*
+        for ( var i = 0; i < numItems; i++ ) {
+            markup += "<li>" + cItems[i].name + "</li>";
+        }*/
+        //markup +="<li>prueba</li>";
+        //markup +="<li>prueba1</li>";        
+
+            
+});
+
+
+</script>

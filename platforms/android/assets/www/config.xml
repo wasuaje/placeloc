@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wasuaje.placelocator" version="0.0.1" xmlns:android="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>PlaceLocator</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@callback.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <feature name="http://api.phonegap.com/1.0/device"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <preference name="phonegap-version" value="2.9.0" /> <!-- all: current version of PhoneGap -->
+    <preference name="orientation" value="default" /> <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="target-device" value="universal" /> <!-- all: possible values handset, tablet, or universal -->
+    <preference name="fullscreen" value="true" /> <!-- all: hides the status bar at the top of the screen -->
+    <preference name="webviewbounce" value="true" /> <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+    <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+    <preference name="stay-in-webview" value="false" /> <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
+    <preference name="ios-statusbarstyle" value="black-opaque" /> <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+    <preference name="detect-data-types" value="true" /> <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+    <preference name="exit-on-suspend" value="false" /> <!-- ios: if set to true, app will terminate when home button is pressed -->
+    <preference name="show-splash-screen-spinner" value="true" /> <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+    <preference name="auto-hide-splash-screen" value="true" /> <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+    <preference name="disable-cursor" value="false" /> <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
+    <preference name="android-minSdkVersion" value="7" /> <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-installLocation" value="auto" /> <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+    <preference name="load-url-timeout" value="50000" />
+    
+
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+
+   <supports-screens
+    android:largeScreens="true"
+    android:normalScreens="true"
+    android:smallScreens="true"
+    android:resizeable="true"
+    android:anyDensity="true" />
+   
+   <compatible-screens>     
+  <!-- all small size screens -->
+  <screen android:screenSize="small" android:screenDensity="ldpi" />
+  <screen android:screenSize="small" android:screenDensity="mdpi" />
+  <screen android:screenSize="small" android:screenDensity="hdpi" />
+  <screen android:screenSize="small" android:screenDensity="xhdpi" />
+  <!-- all normal size screens -->
+  <screen android:screenSize="normal" android:screenDensity="ldpi" />
+  <screen android:screenSize="normal" android:screenDensity="mdpi" />
+  <screen android:screenSize="normal" android:screenDensity="hdpi" />
+  <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+  <screen android:screenSize="large" android:screenDensity="ldpi" />
+  <screen android:screenSize="large" android:screenDensity="mdpi" />
+  <screen android:screenSize="large" android:screenDensity="hdpi" />
+  <screen android:screenSize="large" android:screenDensity="xhdpi" />
+  <screen android:screenSize="xlarge" android:screenDensity="ldpi" />
+  <screen android:screenSize="xlarge" android:screenDensity="mdpi" />
+  <screen android:screenSize="xlarge" android:screenDensity="hdpi" />
+  <screen android:screenSize="xlarge" android:screenDensity="xhdpi" />
+</compatible-screens>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    
+   <access origin="*" />
+</widget>
+

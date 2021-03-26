@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wasuaje.placelocator" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hello Cordova</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <access origin="*" />
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <author email="dev@callback.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/geolocation" />
+    <preference name="phonegap-version" value="2.9.0" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="load-url-timeout" value="50000" />
+    <preference name="webviewbounce" value="false" />
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" />
+    <compatible-screens>
+        <screen android:screenDensity="ldpi" android:screenSize="small" />
+        <screen android:screenDensity="mdpi" android:screenSize="small" />
+        <screen android:screenDensity="hdpi" android:screenSize="small" />
+        <screen android:screenDensity="xhdpi" android:screenSize="small" />
+        <screen android:screenDensity="ldpi" android:screenSize="normal" />
+        <screen android:screenDensity="mdpi" android:screenSize="normal" />
+        <screen android:screenDensity="hdpi" android:screenSize="normal" />
+        <screen android:screenDensity="xhdpi" android:screenSize="normal" />
+        <screen android:screenDensity="ldpi" android:screenSize="large" />
+        <screen android:screenDensity="mdpi" android:screenSize="large" />
+        <screen android:screenDensity="hdpi" android:screenSize="large" />
+        <screen android:screenDensity="xhdpi" android:screenSize="large" />
+        <screen android:screenDensity="ldpi" android:screenSize="xlarge" />
+        <screen android:screenDensity="mdpi" android:screenSize="xlarge" />
+        <screen android:screenDensity="hdpi" android:screenSize="xlarge" />
+        <screen android:screenDensity="xhdpi" android:screenSize="xlarge" />
+    </compatible-screens>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+</widget>
